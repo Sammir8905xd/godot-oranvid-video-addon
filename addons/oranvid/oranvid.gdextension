@@ -6,5 +6,5 @@ reloadable = true
 
 [libraries]
 
-windows.debug.x86_64 = "res://addons/oranvid/bin/windows/liboranvid.windows.template_release.x86_64.dll"
-windows.release.x86_64 = "res://addons/oranvid/bin/windows/liboranvid.windows.template_release.x86_64.dll"
+windows.debug.x86_64 = "res://addons/oranvid/bin/windows/oranvid.windows.template_release.x86_64.dll"
+windows.release.x86_64 = "res://addons/oranvid/bin/windows/oranvid.windows.template_release.x86_64.dll"

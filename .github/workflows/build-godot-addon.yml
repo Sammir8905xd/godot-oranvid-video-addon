@@ -55,7 +55,7 @@ jobs:
       - name: Verify extension output
         shell: pwsh
         run: |
-          $library = "addons/oranvid/bin/windows/liboranvid.windows.template_release.x86_64.dll"
+          $library = "addons/oranvid/bin/windows/oranvid.windows.template_release.x86_64.dll"
           if (-not (Test-Path $library)) {
             throw "Expected GDExtension output was not generated: $library"
           }
