@@ -1,0 +1,4 @@
+godot-cpp/
+.sconsign.dblite
+.sconsign-*
+addons/oranvid/bin/

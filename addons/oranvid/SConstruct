@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import os
+
+godot_cpp_dir = "../../godot-cpp"
+godot_cpp_sconstruct = os.path.join(godot_cpp_dir, "SConstruct")
+if not os.path.isfile(godot_cpp_sconstruct):
+    raise Exception("godot-cpp was not found at ../../../godot-cpp.")
+
+local_env = Environment(tools=["default"], PLATFORM="")
+options = Variables([], ARGUMENTS)
+options.Update(local_env)
+env = local_env.Clone()
+env = SConscript(godot_cpp_sconstruct, {"api_version": "4.7", "env": env})
+env.Append(CPPPATH=["src", "../../native/core"])
+
+sources = Glob("src/*.cpp")
+sources.append("../../native/core/oranvid.c")
+
+suffix = env["suffix"].replace(".dev", "").replace(".universal", "")
+library_name = "{}oranvid{}{}".format(
+    env.subst("$SHLIBPREFIX"),
+    suffix,
+    env.subst("$SHLIBSUFFIX"),
+)
+library = env.SharedLibrary(
+    "bin/{}/{}".format(env["platform"], library_name),
+    source=sources,
+)
+Default(library)
